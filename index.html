@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MG GAMES EOOD | Modern Retail & Digital Commerce</title>
+    <meta name="description" content="Premier operator in general merchandise, retail trade, and digital commerce software.">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* DESIGN SYSTEM: PREMIUM CYBER RETAIL */
+        :root {
+            --bg-base: #030712;         /* Deep Tech Black */
+            --bg-panel: #0f172a;        /* Slate Blue Dark */
+            --accent-main: #00e5ff;     /* Cyber Cyan */
+            --accent-glow: rgba(0, 229, 255, 0.4);
+            --text-main: #f8fafc;       /* Crisp White */
+            --text-muted: #94a3b8;      /* Muted Silver-Blue */
+            --border-light: rgba(0, 229, 255, 0.15);
+            
+            --font-display: 'Playfair Display', 'Georgia', serif;
+            --font-body: 'Inter', system-ui, sans-serif;
+            --font-mono: 'Courier New', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-main);
+            background-color: var(--bg-base);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Abstract Ambient Background (Grid/Nodes) */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(0, 229, 255, 0.05) 0%, transparent 50%),
+                linear-gradient(rgba(255,255,255,0.01) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.01) 1px, transparent 1px);
+            background-size: 100% 100%, 40px 40px, 40px 40px;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            background: rgba(3, 7, 18, 0.85);
+            backdrop-filter: blur(12px);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* CSS Logo Icon: Digital Box / Retail Concept */
+        .logo-icon {
+            width: 28px; height: 28px;
+            border: 2px solid var(--accent-main);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px var(--accent-glow);
+            transform: rotate(45deg);
+        }
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            width: 12px; height: 12px;
+            border: 2px solid var(--accent-main);
+            background: rgba(0, 229, 255, 0.2);
+        }
+
+        .nav-links { display: flex; gap: 40px; font-weight: 500; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px;}
+        .nav-links a { text-decoration: none; color: var(--text-muted); transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-main); }
+
+        .btn-nav {
+            background: transparent;
+            color: var(--accent-main) !important;
+            padding: 10px 24px;
+            border: 1px solid var(--accent-main);
+            transition: all 0.3s;
+            font-family: var(--font-display);
+            letter-spacing: 1px;
+            border-radius: 2px;
+        }
+        .btn-nav:hover { background: var(--accent-main); color: var(--bg-base) !important; box-shadow: 0 0 20px var(--accent-glow); }
+
+        /* --- HERO SECTION --- */
+        header {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 140px 5% 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            font-family: var(--font-mono);
+            color: var(--accent-main);
+            font-size: 0.85rem;
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--accent-main);
+            padding-bottom: 5px;
+        }
+
+        header h1 {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 5vw, 5rem);
+            line-height: 1.1;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .text-accent {
+            color: var(--accent-main);
+            font-style: italic;
+        }
+
+        header p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 550px;
+            font-weight: 300;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-main), #0096a8);
+            color: var(--bg-base);
+            padding: 20px 45px;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px var(--accent-glow);
+            border-radius: 2px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 229, 255, 0.6);
+            filter: brightness(1.2);
+        }
+
+        /* Abstract CSS Graphic: Network/Supply Chain Nodes */
+        .hero-graphic {
+            position: relative;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .network-container {
+            width: 300px; height: 300px;
+            position: relative;
+            animation: floatSlow 6s ease-in-out infinite;
+        }
+
+        .node {
+            position: absolute;
+            background: var(--bg-panel);
+            border: 2px solid var(--accent-main);
+            box-shadow: 0 0 20px var(--accent-glow);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .node::after {
+            content: ''; width: 40%; height: 40%;
+            background: var(--accent-main); border-radius: 50%;
+        }
+
+        .node-1 { width: 80px; height: 80px; top: 0; left: 50%; transform: translateX(-50%); }
+        .node-2 { width: 60px; height: 60px; bottom: 20%; left: 0; }
+        .node-3 { width: 100px; height: 100px; bottom: 10%; right: 0; }
+
+        .line {
+            position: absolute;
+            background: var(--border-light);
+            z-index: -1;
+        }
+        .line-1 { width: 2px; height: 150px; top: 60px; left: 35%; transform: rotate(35deg); }
+        .line-2 { width: 2px; height: 180px; top: 60px; right: 35%; transform: rotate(-30deg); }
+        .line-3 { width: 200px; height: 2px; bottom: 35%; left: 15%; transform: rotate(15deg); }
+
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* --- OPERATIONS GRID --- */
+        .section {
+            padding: 120px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            color: var(--text-main);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .service-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            padding: 50px 40px;
+            transition: all 0.4s;
+            position: relative;
+            text-align: left;
+            border-radius: 4px;
+        }
+
+        .service-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+            background: var(--accent-main); opacity: 0; transition: opacity 0.4s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--border-light);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(0, 229, 255, 0.05);
+        }
+        .service-card:hover::before { opacity: 1; }
+
+        .card-icon {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            color: var(--accent-main);
+            margin-bottom: 25px;
+            display: inline-block;
+            font-style: italic;
+        }
+
+        .service-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--text-main);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        /* --- APP PROMO (SOFTWARE PUBLISHING) --- */
+        .app-promo {
+            background: linear-gradient(135deg, #0f172a 0%, #030712 100%);
+            border: 1px solid var(--border-light);
+            padding: 100px 5%;
+            margin: 80px 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .app-text h2 {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        .app-list { list-style: none; margin: 40px 0; }
+        .app-list li {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+        .app-list li::before {
+            content: '■'; color: var(--accent-main); font-size: 0.8rem; margin-top: 5px;
+        }
+
+        /* Mobile Mockup - Digital Commerce App */
+        .mockup-phone {
+            width: 100%; max-width: 320px; height: 620px;
+            margin: 0 auto; background: #000;
+            border: 4px solid #1e293b; border-radius: 40px;
+            padding: 12px;
+            box-shadow: 0 0 60px rgba(0, 229, 255, 0.15);
+            display: flex; flex-direction: column; z-index: 2;
+            position: relative;
+        }
+
+        .phone-screen {
+            flex: 1; background: var(--bg-base);
+            border-radius: 28px; overflow: hidden;
+            display: flex; flex-direction: column;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .ui-header {
+            padding: 30px 20px 20px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .ui-header-title {
+            font-family: var(--font-display);
+            font-size: 1.2rem; color: var(--accent-main);
+            letter-spacing: 1px; text-transform: uppercase;
+        }
+        .ui-header-sub { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted); }
+
+        .ui-content { padding: 20px; flex: 1; display: flex; flex-direction: column; gap: 15px; }
+
+        .status-card {
+            background: rgba(0, 229, 255, 0.05);
+            border: 1px solid var(--border-light);
+            border-radius: 8px; padding: 15px; display: flex; justify-content: space-between; align-items: center;
+        }
+        
+        .ui-module {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 15px; border-radius: 6px;
+        }
+        .ui-module-title { font-family: var(--font-mono); font-size: 0.65rem; color: var(--accent-main); margin-bottom: 5px; text-transform: uppercase;}
+        
+        .ui-btn {
+            margin-top: auto; background: var(--accent-main); color: var(--bg-base);
+            text-align: center; padding: 15px; font-family: var(--font-display);
+            font-weight: 700; text-transform: uppercase; border-radius: 4px; letter-spacing: 1px;
+        }
+
+        /* --- VERIFICATION REGISTRY --- */
+        .registry-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+        }
+
+        .data-panel {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid var(--border-light);
+            padding: 50px;
+            border-radius: 4px;
+        }
+
+        .data-row {
+            margin-bottom: 25px; padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .data-row:last-child { border: none; margin: 0; padding: 0; }
+
+        .data-label {
+            font-family: var(--font-mono); font-size: 0.75rem;
+            color: var(--text-muted); margin-bottom: 5px;
+            display: block; text-transform: uppercase; letter-spacing: 1px;
+        }
+
+        .data-value {
+            font-size: 1.1rem; color: var(--accent-main); line-height: 1.6;
+            font-family: var(--font-display);
+        }
+
+        form { display: flex; flex-direction: column; gap: 20px; }
+
+        input, textarea {
+            width: 100%; padding: 18px;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255,255,255,0.1);
+            font-family: var(--font-body); color: var(--text-main);
+            font-size: 1rem; transition: all 0.3s;
+            border-radius: 2px;
+        }
+
+        input:focus, textarea:focus {
+            outline: none; border-color: var(--accent-main);
+            background: rgba(0, 229, 255, 0.05);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #02040a; border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 100px 5% 40px; margin-top: 100px;
+        }
+
+        .footer-grid {
+            max-width: 1400px; margin: 0 auto; display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 60px; margin-bottom: 80px;
+        }
+
+        .footer-col h4 {
+            color: var(--accent-main); font-family: var(--font-display);
+            margin-bottom: 25px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 2px;
+        }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 12px; }
+        .footer-col a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
+        .footer-col a:hover { color: var(--text-main); }
+
+        .copyright {
+            text-align: center; padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: #475569; font-family: var(--font-mono); font-size: 0.8rem;
+        }
+
+        @media (max-width: 992px) {
+            .hero-grid, .app-promo, .registry-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .hero-graphic { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <div class="logo-icon"></div>
+            MG GAMES EOOD
+        </div>
+        <div class="nav-links">
+            <a href="#services">Operations</a>
+            <a href="#app">Digital Hub</a>
+            <a href="#registry">Identity</a>
+            <a href="#contact" class="btn-nav">Partner Portal</a>
+        </div>
+    </nav>
+
+    <header>
+        <div class="hero-grid">
+            <div>
+                <div class="hero-tag">Global Retail & Merchandise</div>
+                <h1>Evolving the <br><span class="text-accent">Retail Landscape</span>.</h1>
+                <p>MG GAMES EOOD is a dynamic force in modern retail, managing expansive merchandise networks, warehouse operations, and cutting-edge digital commerce solutions.</p>
+                <a href="#app" class="btn-primary">Discover Ecosystem</a>
+            </div>
+            
+            <div class="hero-graphic">
+                <div class="network-container">
+                    <div class="line line-1"></div>
+                    <div class="line line-2"></div>
+                    <div class="line line-3"></div>
+                    <div class="node node-1"></div>
+                    <div class="node node-2"></div>
+                    <div class="node node-3"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="services" class="section">
+        <div class="section-header">
+            <h2>Core Operations</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="card-icon">01.</div>
+                <h3>General Merchandise</h3>
+                <p>Operating comprehensive retail networks. We source, distribute, and sell a vast array of consumer goods, ensuring quality and availability across all touchpoints.</p>
+            </div>
+            <div class="service-card">
+                <div class="card-icon">02.</div>
+                <h3>Warehouse Clubs</h3>
+                <p>Managing high-volume supercenters and warehouse clubs. Our scalable infrastructure supports B2B and B2C supply chains with maximum efficiency.</p>
+            </div>
+            <div class="service-card">
+                <div class="card-icon">03.</div>
+                <h3>Digital Trade Solutions</h3>
+                <p>Bridging physical retail with digital innovation. We develop proprietary software ecosystems to track inventory, manage loyalty, and streamline e-commerce.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="app" class="section" style="padding-top: 0; border: none;">
+        <div class="app-promo">
+            <div class="app-text">
+                <div class="hero-tag" style="border-bottom: none; border-left: 2px solid var(--accent-main); padding-left: 10px;">Google Play Developer Entity</div>
+                <h2>MG Commerce <br>Mobile Hub</h2>
+                <p style="font-size: 1.15rem; color: var(--text-main); margin-bottom: 20px; font-weight: 300;">
+                    To streamline the consumer and B2B experience, <strong>MG GAMES EOOD operates as an official Software Publisher on mobile platforms.</strong>
+                </p>
+                <p style="color: var(--text-muted); line-height: 1.8; font-weight: 300;">
+                    The <em>MG Commerce Hub</em> application empowers our partners and customers. Browse extensive retail catalogs, track wholesale shipments in real-time, and access digital loyalty cards directly from your Android device.
+                </p>
+                
+                <ul class="app-list">
+                    <li>Digital Catalog: Browse miscellaneous general merchandise instantly.</li>
+                    <li>Supply Tracking: Real-time logistics and warehouse status.</li>
+                    <li>Software Publishing: Official distributor of retail management apps.</li>
+                    <li>Secure Infrastructure: Compliant with Google Play data safety protocols.</li>
+                </ul>
+            </div>
+            
+            <div class="mockup-phone">
+                <div class="phone-screen">
+                    <div class="ui-header">
+                        <div class="ui-header-title">MG_RETAIL_HUB</div>
+                        <div class="ui-header-sub">CONNECTION: SECURE</div>
+                    </div>
+                    <div class="ui-content">
+                        
+                        <div class="status-card">
+                            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">INVENTORY STATUS</span>
+                            <span style="color: var(--accent-main); font-weight: bold;">OPTIMAL</span>
+                        </div>
+
+                        <div class="ui-module">
+                            <div class="ui-module-title">PUBLISHER</div>
+                            <div style="font-size: 1rem; font-weight: 300;">MG GAMES EOOD</div>
+                        </div>
+
+                        <div class="ui-module">
+                            <div class="ui-module-title">ACTIVE MODULE</div>
+                            <div style="color: var(--text-muted); font-family: var(--font-body); font-size: 0.9rem;">Client & Supply Chain v4.1</div>
+                        </div>
+
+                        <div class="ui-module" style="border: 1px dashed rgba(0,229,255,0.3); background: transparent;">
+                            <div class="ui-module-title">ACTIVE SHIPMENTS</div>
+                            <div style="font-family: var(--font-mono); font-size: 1.2rem; color: var(--text-main);">14,208</div>
+                        </div>
+
+                        <div class="ui-btn">ACCESS DASHBOARD</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="registry" class="section">
+        <div class="section-header">
+            <h2>Corporate Database Registry</h2>
+        </div>
+        <div class="registry-grid">
+            
+            <div class="data-panel">
+                <div class="data-row">
+                    <span class="data-label">Legal Entity Name</span>
+                    <span class="data-value">MG GAMES EOOD</span>
+                </div>
+                <div class="data-row">
+                    <span class="data-label">Key Principal</span>
+                    <span class="data-value">MARIYA KOKINIDU</span>
+                </div>
+                <div class="data-row">
+                    <span class="data-label">Industry Classification Profile</span>
+                    <span class="data-value" style="font-size: 0.95rem; line-height: 1.8; font-family: var(--font-body); font-weight: 300; color: var(--text-main);">
+                        • Warehouse Clubs & Supercenters<br>
+                        • General Merchandise Retailers<br>
+                        • Retail Trade<br>
+                        • Miscellaneous General Merchandise
+                    </span>
+                </div>
+                <div class="data-row">
+                    <span class="data-label">Registered Headquarters</span>
+                    <span class="data-value" style="color: var(--text-main); font-family: var(--font-body);">55 blvd. MAKEDONIA Distr. YUZHEN, fl. 2, apt. 6<br>Plovdiv, 4004 Bulgaria</span>
+                </div>
+                <div class="data-row" style="border: none;">
+                    <span class="data-label">Official Developer Endpoint</span>
+                    <span class="data-value" style="text-transform: lowercase;"><a href="mailto:info@mggames.cloud" style="color: var(--accent-main); text-decoration: none;">info@mggames.cloud</a></span>
+                </div>
+            </div>
+
+            <div id="contact">
+                <h3 style="font-family: var(--font-display); font-size: 1.8rem; margin-bottom: 20px;">Corporate Inquiries</h3>
+                <p style="color: var(--text-muted); margin-bottom: 40px; font-weight: 300;">Contact our operations office regarding retail partnerships, wholesale inquiries, or to request mobile application support.</p>
+                
+                <form action="mailto:info@mggames.cloud" method="POST" enctype="text/plain">
+                    <input type="text" placeholder="Name / Organization" required>
+                    <input type="email" placeholder="Corporate Email Address" required>
+                    <textarea placeholder="Describe your inquiry or app support request..." rows="4" required></textarea>
+                    <button type="submit" class="btn-primary" style="width: 100%; border: 1px solid var(--accent-main); cursor: pointer; box-shadow: none;">Send Transmission</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo" style="margin-bottom: 20px; font-size: 1rem;">
+                    <div class="logo-icon" style="width: 20px; height: 20px; box-shadow: none; border-width: 1px;"></div>
+                    MG GAMES EOOD
+                </div>
+                <p style="color: var(--text-muted); font-size: 0.85rem; font-weight: 300;">Pioneering modern retail solutions, warehouse management, and interactive digital commerce experiences.</p>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Digital Platforms</h4>
+                <ul>
+                    <li><a href="#">Google Play Publisher Status</a></li>
+                    <li><a href="#">Report Software Bug</a></li>
+                    <li><a href="#" style="color: var(--text-main); font-weight: bold;">Request Account & Data Deletion</a></li>
+                    <li><a href="#">Commerce API Documentation</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Legal & Compliance</h4>
+                <ul>
+                    <li><a href="#">Wholesale & Retail Terms</a></li>
+                    <li><a href="#">Software Publishing Agreement</a></li>
+                    <li><a href="#">Privacy Policy (GDPR)</a></li>
+                    <li><a href="#">Supply Chain Ethics</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 MG GAMES EOOD. Retail & Commerce Systems.
+        </div>
+    </footer>
+
+</body>
+</html>
